@@ -2,8 +2,27 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const GalleryList = ({}) => {
+const GalleryList = () => {
     const [Gallery, SetGallery] = useState([])
+
+    const handleLikes = (id)=> {
+
+         
+        console.log("like works");
+        axios({
+            method: "PUT",
+            url: `/likes/${id}`
+        })
+        .then((response)=>{
+            console.log("response in PUT", response);
+            
+        })
+        .catch((error)=>{
+            console.error("error in jsx PUT", error )
+        })
+         
+            
+    }
 
   useEffect(()=>{
     fetchGallery()
@@ -16,8 +35,8 @@ const GalleryList = ({}) => {
     })
     .then((response)=>{
       console.log("response from GET", response.data);
-      const pictures = response.data
-       SetGallery(pictures)
+      
+       SetGallery(response.data)
 
     })
     .catch((error)=>{
@@ -25,13 +44,21 @@ const GalleryList = ({}) => {
 
     })
 
+ 
+            
+    
+
   }
   return (
     <>
-    <h2> All Creatures </h2>
+    <h2> All Pictures </h2>
     <ul>{
             Gallery.map((pics)=>(
-                <li key={pics.id}>{pics.url}, {pics.title}, {pics.description}</li>
+                <li key={pics.id}> 
+                <img src={pics.url} alt={pics.title} />
+                <p>{pics.title}, {pics.description}</p>
+                <button onClick={()=> handleLikes(pics.id)} >Like</button>
+                </li>
             ))
 
         }

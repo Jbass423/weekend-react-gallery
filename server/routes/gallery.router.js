@@ -10,7 +10,7 @@ router.put('/likes/:id', (req, res) => {
    UPDATE "gallery"
    SET "likes" = "likes" + 1 
    WHERE "id" = $1;
-   `
+   `;
   
    pool.query(queryText, [id])
    .then((response)=>{
