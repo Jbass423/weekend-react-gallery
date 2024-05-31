@@ -3,8 +3,10 @@ const router = express.Router();
 const pool = require('../modules/pool.js');
 
 // PUT /gallery/like/:id
-router.put('/likes/:id', (req, res) => {
-  const [id] = req.params.id
+router.put('/api/gallery/likes/:id', (req, res) => {
+  const id = req.params.id;
+  
+  
 
   const queryText = `
    UPDATE "gallery"
@@ -13,23 +15,22 @@ router.put('/likes/:id', (req, res) => {
    `;
   
    pool.query(queryText, [id])
-   .then((response)=>{
+   .then((result)=>{
     
-    console.log(response);
-    res.sendStatus(200)
+    console.log(result);
+    res.sendStatus(200);
   })
     .catch((error)=>{
-      console.error("error in put", error )
-      res.sendStatus(500)
-    })
-
+      console.error("error in put", error );
+      res.sendStatus(500);
+    });
 });
 
 // GET /gallery
-router.get('/', (req, res) => {
+router.get('/api/gallery', (req, res) => {
   const queryText = `
-  SELECT  * FROM "gallery"
-  `
+  SELECT  * FROM "gallery";
+  `;
 
   pool.query(queryText)
   .then((response)=>{
