@@ -23,7 +23,6 @@ const GalleryItem = ({ pic, handleLikes }) => {
 
 
 
-        
     )
 
 };

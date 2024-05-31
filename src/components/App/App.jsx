@@ -6,7 +6,7 @@ import GalleryList from "../GalleryList/GalleryList";
 
 function App() {
   return (
-    <div>
+    <div data-testid="app">
      <h1>React Gallery</h1>
        <p>The gallery goes here!</p>
         <GalleryList />
