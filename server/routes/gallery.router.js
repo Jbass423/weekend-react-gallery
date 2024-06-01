@@ -4,24 +4,7 @@ const pool = require('../modules/pool.js');
 
 
 
-router.get('/gallery',(req , res) => {
- let queryText=`
-  INSERT INTO "gallery" 
-("url", "title", "description")
-VALUES ($1, $2, $3);
-  `;
 
-  pool.query(queryText)
-    .then((result)=>{
-      console.log("result in router get ", result.rows);
-      res.send(result.rows)
-
-    })
-    .catch((error)=>{
-      console.error("failed in get router", error )
-      res.sendStatus(500)
-    })
-})
 
 // PUT /gallery/like/:id
 router.put('/likes/:id', (req, res) => {
@@ -63,5 +46,26 @@ router.get('/', (req, res) => {
     console.error("error in get router", error )
   })
 });
+
+
+router.post('/',(req , res) => {
+  const { url, title, description } = req.body;
+ let queryText=`
+  INSERT INTO "gallery" 
+("url", "title", "description")
+VALUES ($1, $2, $3);
+  `;
+
+  pool.query(queryText , [url, title, description])
+    .then((result)=>{
+      console.log("result in router get ", result);
+     res.sendStatus(200)
+
+    })
+    .catch((error)=>{
+      console.error("failed in get router", error )
+      res.sendStatus(500)
+    })
+})
 
 module.exports = router;
