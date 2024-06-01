@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import axios from "axios";
 
 
 
 
 const GalleryForm = () => {
-    const [getUrl, setUrl]= useState()
-    const [getTitle, setTitle]= useState()
-    const [getDescription, setDescription ]= useState ()
+    const [getUrl, setUrl]= useState("")
+    const [getTitle, setTitle]= useState("")
+    const [getDescription, setDescription ]= useState("")
 
     const addGallery= (event)=>{
         event.preventDefault()
@@ -35,6 +35,10 @@ const GalleryForm = () => {
         })
     
     }
+    useEffect(() => {
+       
+    }, [getUrl, getTitle, getDescription]);
+
 
     return(
         <>

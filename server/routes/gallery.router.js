@@ -59,6 +59,7 @@ VALUES ($1, $2, $3);
   pool.query(queryText , [url, title, description])
     .then((result)=>{
       console.log("result in router get ", result);
+      
      res.sendStatus(200)
 
     })
