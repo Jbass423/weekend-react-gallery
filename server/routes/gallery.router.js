@@ -2,6 +2,27 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool.js');
 
+
+
+router.get('/gallery',(req , res) => {
+ let queryText=`
+  INSERT INTO "gallery" 
+("url", "title", "description")
+VALUES ($1, $2, $3);
+  `;
+
+  pool.query(queryText)
+    .then((result)=>{
+      console.log("result in router get ", result.rows);
+      res.send(result.rows)
+
+    })
+    .catch((error)=>{
+      console.error("failed in get router", error )
+      res.sendStatus(500)
+    })
+})
+
 // PUT /gallery/like/:id
 router.put('/likes/:id', (req, res) => {
   const id = req.params.id;

@@ -49,14 +49,16 @@ const GalleryList = () => {
   }
 
   return (
-    <div data-testid="galleryList">
+    
+    <div id="container" data-testid="galleryList">
         <h2>All Pictures</h2>
-        <ul>
+        <ul id="galleryList">
             {gallery.map((pic) => (
                 <GalleryItem key={pic.id} pic={pic} handleLikes={handleLikes} />
             ))}
         </ul>
     </div>
+    
 );
 
 }

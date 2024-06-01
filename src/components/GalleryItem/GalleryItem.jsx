@@ -14,7 +14,7 @@ const GalleryItem = ({ pic, handleLikes }) => {
                 {showImage ? (
                     <img src={pic.url} alt={pic.title} data-testid="toggle" onClick={toggleDisplay} />
                 ) : (
-                    <p data-testid="toggle" onClick={toggleDisplay}>{pic.description}</p>
+                    <p className="des" data-testid="toggle" onClick={toggleDisplay}>{pic.description}</p>
                 )}
                 <p>{pic.title}</p>
                 <p>Likes: {pic.likes}</p>
