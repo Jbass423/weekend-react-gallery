@@ -44,6 +44,22 @@ const GalleryList = () => {
       .catch((error) => {
         console.error("error in jsx PUT", error)
       })
+    }
+      const handleDelete = (id) => {
+        axios({
+            method: "DELETE",
+            url: `/api/gallery/${id}`
+        })
+        .then((response)=>{
+            console.log("response in delete axios", response);
+         fetchGallery()     
+         
+
+      })
+      .catch((error)=>{
+        console.error("it failed in delete", error)
+      })
+     
 
 
   }
@@ -53,9 +69,14 @@ const GalleryList = () => {
     <div id="container" data-testid="galleryList">
         <h2>All Pictures</h2>
         <ul id="galleryList">
+          
             {gallery.map((pic) => (
-                <GalleryItem key={pic.id} pic={pic} handleLikes={handleLikes} />
+              <li>
+                <GalleryItem key={pic.id} pic={pic} handleLikes={handleLikes} />   
+                <button onClick={()=> handleDelete(pic.id) } >DELETE</button>
+                </li>
             ))}
+           
         </ul>
     </div>
     

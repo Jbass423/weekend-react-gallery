@@ -69,4 +69,23 @@ VALUES ($1, $2, $3);
     })
 })
 
+router.delete('/:id', (req, res) => {
+
+  let reqId = [req.params.id]
+
+  let queryText = `DELETE FROM "gallery" WHERE "id" = $1;`
+
+  pool.query(queryText, reqId)
+  .then((result) => {
+      console.log("remove successful!!!");
+      res.sendStatus(200)
+  })
+  .catch((err) => {
+      console.log("error in router Delete", err);
+      res.sendStatus(500)
+
+  })
+ 
+});
+
 module.exports = router;
