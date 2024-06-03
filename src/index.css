@@ -14,16 +14,17 @@ body {
     
 body{color: whitesmoke;}
 
-ul{ width: 30px;
-  padding-left: 15cm;
-  padding-top: 3cm;
+li{ width: 30px;
+  cursor: pointer;
+
+ ;
  
 }
 
 div {
  
-  animation-play-state: running;
-  animation-name:inherit;
-  animation-duration: 4s;
+  
 }
+
+
 

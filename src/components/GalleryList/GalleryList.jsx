@@ -71,9 +71,9 @@ const GalleryList = () => {
         <ul id="galleryList">
           
             {gallery.map((pic) => (
-              <li>
-                <GalleryItem key={pic.id} pic={pic} handleLikes={handleLikes} />   
-                <button onClick={()=> handleDelete(pic.id) } >DELETE</button>
+              <li key={pic.id} >
+                <GalleryItem pic={pic} handleLikes={handleLikes} />   
+                <button key={pic.delete} onClick={()=> handleDelete(pic.id) } >DELETE</button>
                 </li>
             ))}
            
